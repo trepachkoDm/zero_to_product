@@ -2,6 +2,7 @@ use secrecy::{Secret, ExposeSecret};
 use sqlx::postgres::PgConnectOptions;
 use sqlx::postgres::PgSslMode;
 use sqlx::ConnectOptions;
+use serde_aux::prelude::deserialize_number_from_string;
 
 #[derive(serde::Deserialize)]
 pub struct Settings {
@@ -45,8 +46,8 @@ impl DatabaseSettings {
     }
 
     pub fn with_db(&self) -> PgConnectOptions {
-        let mut options = self.without_db().database(&self.database_name);
-        options.log_statements(tracing::log::LevelFilter::Trace);
+        let options = self.without_db().database(&self.database_name);
+        options.clone().log_statements(tracing::log::LevelFilter::Trace);
         options
     }
 }
