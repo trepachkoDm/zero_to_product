@@ -38,11 +38,6 @@ impl AsRef<str> for SubscriberName {
     }
 }
 
-pub struct NewSubscriber {
-    pub email: String,
-    pub name: SubscriberName,
-}
-
 #[cfg(test)]
 mod tests {
     use claims::{assert_err, assert_ok};
