@@ -37,6 +37,8 @@ quickcheck_macros = "0.9.1"
 reqwest = { version = "0.12.1", default-features = false, features = ["json", "rustls-tls"] }
 wiremock = "0.6.0"
 serde_json = "1"
+rand = { version = "0.8", features=["std_rng"] }
 
 
-
+[dev-dependencies]
+linkify = "0.9"

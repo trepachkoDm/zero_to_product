@@ -18,18 +18,6 @@ impl SubscriberName {
             Ok(Self(s))
         }
     }
-
-    pub fn inner(self) -> String {
-        self.0
-    }
-
-    pub fn inner_mut(&mut self) -> &mut str {
-        &mut self.0
-    }
-
-    // pub fn inner_ref(&self) -> &str {
-    //     &self.0
-    // }
 }
 
 impl AsRef<str> for SubscriberName {
@@ -40,12 +28,12 @@ impl AsRef<str> for SubscriberName {
 
 #[cfg(test)]
 mod tests {
-    use claims::{assert_err, assert_ok};
     use crate::domain::SubscriberName;
+    use claims::{assert_err, assert_ok};
 
     #[test]
     fn a_256_grapheme_long_name_is_valid() {
-        let name = "ё".repeat(256);
+        let name = "a̐".repeat(256);
         assert_ok!(SubscriberName::parse(name));
     }
 
